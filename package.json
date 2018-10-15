@@ -369,6 +369,7 @@
     "lodash": "4.17.5",
     "minimist": "1.2.0",
     "react": "15.4.1",
+    "react-device-detect": "^1.6.1",
     "react-dom": "15.4.1",
     "react-helmet": "3.2.2",
     "react-intl": "2.1.5",
