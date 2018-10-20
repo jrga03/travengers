@@ -1,6 +1,10 @@
 import React, { PureComponent } from 'react';
 import { StyledWrapper } from './styles';
 
+import EventCard from '../../components/EventCard';
+
+import { mockEvents } from './fakeData';
+
 class HomePage extends PureComponent { // eslint-disable-line react/prefer-stateless-function
     render() {
         return (
@@ -19,20 +23,16 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
                     </header>
                     <hr />
                     <div>
-                        <div className="event">
-                            <img src="https://images.freeimages.com/images/large-previews/478/jack-o-lanterns-1326113.jpg" alt="Test" />
-                            <div>
-                                <div className="event-date">
-                                    <div>01</div>
-                                    <div>Oct</div>
-                                </div>
-                                <h5 className="event-title">Tango for Fast Learners</h5>
-                            </div>
-                            <p>2 The Avenue London W13 8PH UK</p>
-                            <p>Jul 15, 2014 To Jul 15, 2019</p>
-                            <p>3:00 pm To 5:00 pm</p>
-                            <p>(805) 735-2281111</p>
-                        </div>
+                        {
+                            mockEvents.map(( event ) => (
+                                <EventCard
+                                    key={ event.id }
+                                    details={ event.details }
+                                    liked={ event.liked }
+                                    comments={ event.comments }
+                                />
+                            ))
+                        }
                     </div>
                     <br />
                 </section>
