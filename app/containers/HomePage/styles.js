@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
+    max-width: 1040px;
+    min-width: 800px;
+    margin: auto;
     padding: 15px;
 
     h4 {

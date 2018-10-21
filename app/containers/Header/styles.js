@@ -5,17 +5,23 @@ export const HeaderWrapper = styled.nav`
     height: 75px;
     background: #2b2b2b;
     color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     padding: 15px;
 
-    h1 {
-        margin: 0;
-    }
+    div {
+        display: flex;
+        max-width: 1040px;
+        min-width: 800px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
 
-    h4 {
-        margin: 0;
+        h1 {
+            margin: 0;
+        }
+
+        h4 {
+            margin: 0;
+        }
     }
 `;
