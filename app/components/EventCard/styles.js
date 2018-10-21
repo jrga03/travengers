@@ -1,30 +1,34 @@
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
-/* flex: 1; */
-width: 250px;
+width: 240px;
 height: 400px;
 margin-bottom: 50px;
 align-items: flex-start;
 justify-content: flex-start;
 
-img {
-    width: 100%;
-    height: 170px;
-    object-fit: contain;
+
+a {
+    text-decoration: none;
+
+    img {
+        width: 100%;
+        height: 170px;
+        object-fit: contain;
+    }
 }
 
 .event-header {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
     text-align: center;
-    margin: 10px 0 0 0;
+    margin: 10px 0;
 
     div {
         padding: 0 15px;
-        margin: 0 10px 10px 0;
+        margin-right: 10px;
         border-right-style: solid;
         border-right-width: 1px;
         border-color: gray;
@@ -44,6 +48,11 @@ img {
         text-align: left;
         margin: 0;
         font-size: 15px;
+        color: #000;
+    }
+
+    h5:hover {
+        color: #0000EE;
     }
 }
 
