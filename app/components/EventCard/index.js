@@ -11,15 +11,19 @@ import Time from '../../../assets/Icons/icon_time.svg';
 
 import { StyledWrapper } from './styles';
 
-const EventCard = ({ details, liked, comments }) => (
+const EventCard = ({ id, details, liked, comments }) => (
     <StyledWrapper>
-        <img src={ details.photo } alt="Event" />
+        <a href={ `/event/${id}` }>
+            <img src={ details.photo } alt="Event" />
+        </a>
         <div className="event-header" >
             <div>
                 <h5>{ moment( details.dateStart ).get( 'date' ) }</h5>
                 <h5>{ moment( details.dateStart ).format( 'MMM' ) }</h5>
             </div>
-            <h5>{ details.title }</h5>
+            <a href={ `/event/${id}` }>
+                <h5>{ details.title }</h5>
+            </a>
         </div>
         { details.location && <div className="event-row" >
             <img src={ Pin } alt="Location" />
@@ -28,8 +32,10 @@ const EventCard = ({ details, liked, comments }) => (
         <div className="event-row" >
             <img src={ Calendar } alt="Date" />
             <p>
-                { moment( details.dateStart ).isSame( details.dateEnd ) ?
-                    moment( details.dateStart ).format( 'MMM D, YYYY' ) :
+                { moment( details.dateStart ).isSame( details.dateEnd, 'month' ) ?
+                    ( moment( details.dateStart ).isSame( details.dateEnd ) ?
+                        moment( details.dateStart ).format( 'MMM D, YYYY' ) :
+                        `${moment( details.dateStart ).format( 'MMM D-' )}${moment( details.dateEnd ).format( 'D, YYYY' )}` ) :
                     `${moment( details.dateStart ).format( 'MMM D, YYYY' )} To ${moment( details.dateEnd ).format( 'MMM D, YYYY' )}`
                 }
             </p>
@@ -58,6 +64,7 @@ const EventCard = ({ details, liked, comments }) => (
 );
 
 EventCard.propTypes = {
+    id: PropTypes.number,
     details: PropTypes.object,
     liked: PropTypes.bool,
     comments: PropTypes.number
