@@ -43,7 +43,7 @@ export const mockEvents = [
         details: {
             photo: 'https://images.freeimages.com/images/large-previews/223/lighthouse-fish-1311421.jpg',
             dateStart: new Date( '5/1/2018 10:00' ),
-            dateEnd: new Date( '6/30/2018 10:00' ),
+            dateEnd: new Date( '5/29/2018 10:00' ),
             title: 'The Great Broadway Sing Along',
             location: 'San Francisco, CA 94115',
             contact: null

@@ -27,6 +27,7 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
                             mockEvents.map(( event ) => (
                                 <EventCard
                                     key={ event.id }
+                                    id={ event.id }
                                     details={ event.details }
                                     liked={ event.liked }
                                     comments={ event.comments }
