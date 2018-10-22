@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Helmet from 'react-helmet';
 import { StyledWrapper } from './styles';
 
 import EventCard from '../../components/EventCard';
@@ -9,6 +10,12 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
     render() {
         return (
             <StyledWrapper>
+                <Helmet
+                    title="Travenger"
+                    meta={ [
+                        { name: 'Travenger', content: 'A group travel website for travelers' }
+                    ] }
+                />
                 <section>
                     <header>
                         <h4>Browse Events By Categories</h4>
