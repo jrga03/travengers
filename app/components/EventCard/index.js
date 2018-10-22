@@ -36,14 +36,14 @@ const EventCard = ({ id, details, liked, comments }) => (
                     ( moment( details.dateStart ).isSame( details.dateEnd ) ?
                         moment( details.dateStart ).format( 'MMM D, YYYY' ) :
                         `${moment( details.dateStart ).format( 'MMM D-' )}${moment( details.dateEnd ).format( 'D, YYYY' )}` ) :
-                    `${moment( details.dateStart ).format( 'MMM D, YYYY' )} To ${moment( details.dateEnd ).format( 'MMM D, YYYY' )}`
+                    `${moment( details.dateStart ).format( 'MMM D, YYYY' )} - ${moment( details.dateEnd ).format( 'MMM D, YYYY' )}`
                 }
             </p>
         </div>
         <div className="event-row" >
             <img src={ Time } alt="Time" />
             <p>
-                { `${moment( details.dateStart ).format( 'hh:mm A' )} To ${moment( details.dateEnd ).format( 'hh:mm A' )}` }
+                { `${moment( details.dateStart ).format( 'hh:mm A' )} - ${moment( details.dateEnd ).format( 'hh:mm A' )}` }
             </p>
         </div>
         { details.contact && <div className="event-row" >
