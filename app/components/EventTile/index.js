@@ -11,7 +11,7 @@ import Time from '../../../assets/Icons/icon_time.svg';
 
 import { StyledWrapper } from './styles';
 
-const EventCard = ({ id, details, liked, comments }) => (
+const EventTile = ({ id, details, liked, comments }) => (
     <StyledWrapper>
         <a href={ `/event/${id}` }>
             <img src={ details.photo } alt="Event" />
@@ -63,16 +63,16 @@ const EventCard = ({ id, details, liked, comments }) => (
     </StyledWrapper>
 );
 
-EventCard.propTypes = {
+EventTile.propTypes = {
     id: PropTypes.number,
     details: PropTypes.object,
     liked: PropTypes.bool,
     comments: PropTypes.number
 };
 
-EventCard.defaultProps = {
+EventTile.defaultProps = {
     liked: false,
     comments: 0
 };
 
-export default EventCard;
+export default EventTile;

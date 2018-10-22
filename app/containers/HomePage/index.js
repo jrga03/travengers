@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Helmet from 'react-helmet';
 import { StyledWrapper } from './styles';
 
-import EventCard from '../../components/EventCard';
+import EventTile from '../../components/EventTile';
 
 import { mockEvents } from './fakeData';
 
@@ -32,7 +32,7 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
                     <div>
                         {
                             mockEvents.map(( event ) => (
-                                <EventCard
+                                <EventTile
                                     key={ event.id }
                                     id={ event.id }
                                     details={ event.details }
