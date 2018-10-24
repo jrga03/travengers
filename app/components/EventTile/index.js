@@ -64,8 +64,15 @@ const EventTile = ({ id, details, liked, comments }) => (
 );
 
 EventTile.propTypes = {
-    id: PropTypes.number,
-    details: PropTypes.object,
+    id: PropTypes.number.isRequired,
+    details: PropTypes.shape({
+        photo: PropTypes.string.isRequired,
+        dateStart: PropTypes.object.isRequired,
+        dateEnd: PropTypes.object.isRequired,
+        title: PropTypes.string.isRequired,
+        location: PropTypes.string,
+        contact: PropTypes.string
+    }).isRequired,
     liked: PropTypes.bool,
     comments: PropTypes.number
 };
