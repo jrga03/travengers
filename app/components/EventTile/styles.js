@@ -21,7 +21,7 @@ a {
 .event-header {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     text-align: center;
     margin: 10px 0;
