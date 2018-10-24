@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { StyledWrapper } from './styles';
 
 import EventTile from '../../components/EventTile';
+import EventRow from '../../components/EventRow';
 
 import { mockEvents } from './fakeData';
 
@@ -16,14 +17,14 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
                         { name: 'Travenger', content: 'A group travel website for travelers' }
                     ] }
                 />
-                <section>
+                {/* <section>
                     <header>
                         <h4>Browse Events By Categories</h4>
                     </header>
                     <hr />
                     <div>Categories here</div>
                     <br />
-                </section>
+                </section> */}
                 <section className="events">
                     <header>
                         <h4>Popular Events</h4>
@@ -49,7 +50,19 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
                         <h4>Events</h4>
                     </header>
                     <hr />
-                    <div>Events here</div>
+                    <div>
+                        {
+                            mockEvents.map(( event ) => (
+                                <EventRow
+                                    key={ event.id }
+                                    id={ event.id }
+                                    details={ event.details }
+                                    liked={ event.liked }
+                                    comments={ event.comments }
+                                />
+                            ))
+                        }
+                    </div>
                     <br />
                 </section>
             </StyledWrapper>
