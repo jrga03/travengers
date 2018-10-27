@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import Helmet from 'react-helmet';
-import { StyledWrapper } from './styles';
+import { browserHistory } from 'react-router';
 
+import { StyledWrapper } from './styles';
 import EventTile from '../../components/EventTile';
 import EventRow from '../../components/EventRow';
 
-import { mockEvents } from './fakeData';
+import { mockEvents } from '../App/fakeData';
 
 class HomePage extends PureComponent { // eslint-disable-line react/prefer-stateless-function
     render() {
@@ -17,14 +18,6 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
                         { name: 'Travenger', content: 'A group travel website for travelers' }
                     ] }
                 />
-                {/* <section>
-                    <header>
-                        <h4>Browse Events By Categories</h4>
-                    </header>
-                    <hr />
-                    <div>Categories here</div>
-                    <br />
-                </section> */}
                 <section className="events">
                     <header>
                         <h4>Popular Events</h4>
@@ -39,6 +32,7 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
                                     details={ event.details }
                                     liked={ event.liked }
                                     comments={ event.comments }
+                                    onClick={ ( e ) => { e.preventDefault(); browserHistory.push( `/events/${event.id}` ); } }
                                 />
                             ))
                         }
@@ -59,6 +53,7 @@ class HomePage extends PureComponent { // eslint-disable-line react/prefer-state
                                     details={ event.details }
                                     liked={ event.liked }
                                     comments={ event.comments }
+                                    onClick={ ( e ) => { e.preventDefault(); browserHistory.push( `/events/${event.id}` ); } }
                                 />
                             ))
                         }

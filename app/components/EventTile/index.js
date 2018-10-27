@@ -11,9 +11,9 @@ import Time from '../../../assets/Icons/icon_time.svg';
 
 import { StyledWrapper } from './styles';
 
-const EventTile = ({ id, details, liked, comments }) => (
+const EventTile = ({ id, details, liked, comments, onClick }) => (
     <StyledWrapper>
-        <a href={ `/event/${id}` }>
+        <a href={ `/events/${id}` } onClick={ onClick }>
             <img src={ details.photo } alt="Event" />
         </a>
         <div className="event-header" >
@@ -21,7 +21,7 @@ const EventTile = ({ id, details, liked, comments }) => (
                 <h5>{ moment( details.dateStart ).get( 'date' ) }</h5>
                 <h5>{ moment( details.dateStart ).format( 'MMM' ) }</h5>
             </div>
-            <a href={ `/event/${id}` }>
+            <a href={ `/events/${id}` } onClick={ onClick }>
                 <h5>{ details.title }</h5>
             </a>
         </div>
@@ -74,7 +74,8 @@ EventTile.propTypes = {
         contact: PropTypes.string
     }).isRequired,
     liked: PropTypes.bool,
-    comments: PropTypes.number
+    comments: PropTypes.number,
+    onClick: PropTypes.func.isRequired
 };
 
 EventTile.defaultProps = {

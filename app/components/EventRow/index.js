@@ -11,10 +11,10 @@ import Time from '../../../assets/Icons/icon_time.svg';
 
 import { StyledWrapper, EventRowWrapper } from './styles';
 
-const EventRow = ({ id, details, liked, comments }) => (
+const EventRow = ({ id, details, liked, comments, onClick }) => (
     <StyledWrapper>
         <EventRowWrapper>
-            <a href={ `/event/${id}` }>
+            <a href={ `/events/${id}` } onClick={ onClick }>
                 <img src={ details.photo } alt="Event" />
             </a>
             <div>
@@ -23,7 +23,7 @@ const EventRow = ({ id, details, liked, comments }) => (
                         <h5>{ moment( details.dateStart ).get( 'date' ) }</h5>
                         <h5>{ moment( details.dateStart ).format( 'MMM' ) }</h5>
                     </div>
-                    <a href={ `/event/${id}` }>
+                    <a href={ `/events/${id}` } onClick={ onClick }>
                         <h5>{ details.title }</h5>
                     </a>
                 </div>
@@ -57,7 +57,7 @@ const EventRow = ({ id, details, liked, comments }) => (
                     </div>
                 }
                 <p className="description" >{ details.description }</p>
-                { details.description.length > 500 && <a href={ `/event/${id}` }>Read more</a> }
+                { details.description.length > 500 && <a href={ `/events/${id}` } onClick={ onClick }>Read more</a> }
                 <div className="event-footer">
                     <button>
                         <img src={ liked ? ThumbUp : ThumbUpOutline } alt="Like" />
@@ -86,7 +86,8 @@ EventRow.propTypes = {
         description: PropTypes.string.isRequired
     }).isRequired,
     liked: PropTypes.bool,
-    comments: PropTypes.number
+    comments: PropTypes.number,
+    onClick: PropTypes.func.isRequired
 };
 
 EventRow.defaultProps = {
