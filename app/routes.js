@@ -4,43 +4,63 @@
 // about the code splitting business
 import { getAsyncInjectors } from 'utils/asyncInjectors';
 
-const errorLoading = (err) => {
-  console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
+const errorLoading = ( err ) => {
+    console.error( 'Dynamic page loading failed', err ); // eslint-disable-line no-console
 };
 
-const loadModule = (cb) => (componentModule) => {
-  cb(null, componentModule.default);
+const loadModule = ( cb ) => ( componentModule ) => {
+    cb( null, componentModule.default );
 };
 
-export default function createRoutes(store) {
+/**
+ *
+ * @param {*} store Redux store
+ */
+export default function createRoutes( store ) {
   // Create reusable async injectors using getAsyncInjectors factory
-  const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
+    const { injectReducer, injectSagas } = getAsyncInjectors( store ); // eslint-disable-line no-unused-vars
 
-  return [
-    {
-      path: '/',
-      name: 'home',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/HomePage'),
-        ]);
+    return [
+        {
+            path: '/',
+            name: 'home',
+            getComponent( nextState, cb ) {
+                const importModules = Promise.all([
+                    import( 'containers/HomePage' )
+                ]);
 
-        const renderRoute = loadModule(cb);
+                const renderRoute = loadModule( cb );
 
-        importModules.then(([component]) => {
-          renderRoute(component);
-        });
+                importModules.then(([component]) => {
+                    renderRoute( component );
+                });
 
-        importModules.catch(errorLoading);
-      },
-    }, {
-      path: '*',
-      name: 'notfound',
-      getComponent(nextState, cb) {
-        import('containers/NotFoundPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    },
-  ];
+                importModules.catch( errorLoading );
+            }
+        }, {
+            path: '/events/:eventId',
+            name: 'event',
+            getComponent( nextState, cb ) {
+                const importModules = Promise.all([
+                    import( 'containers/EventDetails' )
+                ]);
+
+                const renderRoute = loadModule( cb );
+
+                importModules.then(([component]) => {
+                    renderRoute( component );
+                });
+
+                importModules.catch( errorLoading );
+            }
+        }, {
+            path: '*',
+            name: 'notfound',
+            getComponent( nextState, cb ) {
+                import( 'containers/NotFoundPage' )
+          .then( loadModule( cb ))
+          .catch( errorLoading );
+            }
+        }
+    ];
 }
