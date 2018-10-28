@@ -15,7 +15,7 @@ const EventRow = ({ id, details, liked, comments, onClick }) => (
     <StyledWrapper>
         <EventRowWrapper>
             <a href={ `/events/${id}` } onClick={ onClick }>
-                <img src={ details.photo } alt="Event" />
+                <img src={ details.photos[ 0 ] } alt={ `Event_${id}` } />
             </a>
             <div>
                 <div className="event-header" >
@@ -77,7 +77,7 @@ const EventRow = ({ id, details, liked, comments, onClick }) => (
 EventRow.propTypes = {
     id: PropTypes.number.isRequired,
     details: PropTypes.shape({
-        photo: PropTypes.string.isRequired,
+        photos: PropTypes.arrayOf( PropTypes.string ).isRequired,
         dateStart: PropTypes.object.isRequired,
         dateEnd: PropTypes.object.isRequired,
         title: PropTypes.string.isRequired,

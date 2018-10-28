@@ -14,7 +14,7 @@ import { StyledWrapper } from './styles';
 const EventTile = ({ id, details, liked, comments, onClick }) => (
     <StyledWrapper>
         <a href={ `/events/${id}` } onClick={ onClick }>
-            <img src={ details.photo } alt="Event" />
+            <img src={ details.photos[ 0 ] } alt={ `Event_${id}` } />
         </a>
         <div className="event-header" >
             <div>
@@ -66,7 +66,7 @@ const EventTile = ({ id, details, liked, comments, onClick }) => (
 EventTile.propTypes = {
     id: PropTypes.number.isRequired,
     details: PropTypes.shape({
-        photo: PropTypes.string.isRequired,
+        photos: PropTypes.arrayOf( PropTypes.string ).isRequired,
         dateStart: PropTypes.object.isRequired,
         dateEnd: PropTypes.object.isRequired,
         title: PropTypes.string.isRequired,
